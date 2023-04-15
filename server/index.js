@@ -49,7 +49,7 @@ app.post('/api/user', (req, res) => {
 
     const id = uuid();
     const user = {
-        ...req.body, purchs: [], anns: [], avatar: '/default.jpg',
+        ...req.body, purchs: [], anns: [], pathtoavatar: '/default.jpg',
     };
 
     ids[id] = email;
