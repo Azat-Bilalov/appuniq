@@ -9,8 +9,7 @@ const fs = require('fs');
 const app = express();
 
 app.use(morgan('dev'));
-app.use(express.static(path.resolve(__dirname, 'resourses')));
-app.use(express.static(path.resolve(__dirname, 'dist')));
+app.use(express.static(path.resolve(__dirname, '.')));
 // app.use(body.json());
 app.use(cookie());
 // Устанавливаем максимально допустимый размер тела JSON-запроса в 50 МБ
