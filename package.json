@@ -4,10 +4,7 @@
   "description": "Ad service for buying and selling unique products",
   "main": "index.js",
   "scripts": {
-    "build-prod": "webpack --config webpack.config.prod.js",
-    "build-dev": "webpack --config webpack.config.dev.js",
-    "prestart": "npm run build-dev",
-    "start": "webpack serve --config webpack.config.dev.js"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
