@@ -17,8 +17,8 @@ app.use(cookie());
 app.use(body.json({ limit: '500mb' }));
 app.use(body.urlencoded({ limit: '500mb', extended: true }));
 
-const users = require('./resourses/static/jsonData/users.json');
-const anns = require('./resourses/static/jsonData/anns.json');
+const users = require('./static/jsonData/users.json');
+const anns = require('./static/jsonData/anns.json');
 
 /** session identificators */
 const ids = {};
