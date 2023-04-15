@@ -35,16 +35,16 @@ app.get('/api/user/:id', (req, res) => {
 app.post('/api/user', (req, res) => {
     const { password, login, email } = req.body;
     if (!login || login.length < 4) {
-        return res.status(400).json({ error: 'Логин не менее 4 символов', errorFill: 'username' });
+        return res.status(400).json({ message: 'Логин не менее 4 символов', errorFill: 'username' });
     }
     if (!password || !password.match(/^\S{4,}$/)) {
-        return res.status(400).json({ error: 'Минимальная длина пароля 4 символа', errorFill: 'password' });
+        return res.status(400).json({ message: 'Минимальная длина пароля 4 символа', errorFill: 'password' });
     }
     if (!email) {
-        return res.status(400).json({ error: 'Невалидные данные пользователя', errorFill: 'email' });
+        return res.status(400).json({ message: 'Невалидные данные пользователя', errorFill: 'email' });
     }
     if (users.find((user) => user.email === email)) {
-        return res.status(400).json({ error: 'Пользователь уже существует', errorFill: 'username' });
+        return res.status(400).json({ message: 'Пользователь уже существует', errorFill: 'username' });
     }
 
     const id = uuid();
@@ -143,6 +143,7 @@ app.post('/api/post', (req, res) => {
         return res.status(401).json({ error: 'Пользователь не найден' });
     } else {
         const { title, description, price, tags, image, close } = req.body;
+        console.log(req.body);
         if (!title || !description || !price || !tags || !image || close === undefined) {
             return res.status(400).json({ error: 'Не все поля заполнены' });
         }
