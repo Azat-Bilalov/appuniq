@@ -9,16 +9,16 @@ const fs = require('fs');
 const app = express();
 
 app.use(morgan('dev'));
-app.use(express.static(path.resolve(__dirname, '.')));
-app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, 'resourses')));
+app.use(express.static(path.resolve(__dirname, 'dist')));
 // app.use(body.json());
 app.use(cookie());
 // Устанавливаем максимально допустимый размер тела JSON-запроса в 50 МБ
 app.use(body.json({ limit: '500mb' }));
 app.use(body.urlencoded({ limit: '500mb', extended: true }));
 
-const users = require('./static/jsonData/users.json');
-const anns = require('./static/jsonData/anns.json');
+const users = require('./resourses/static/jsonData/users.json');
+const anns = require('./resourses/static/jsonData/anns.json');
 
 /** session identificators */
 const ids = {};
