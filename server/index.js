@@ -221,7 +221,7 @@ app.get('/api/getseller/:id', (req, res) => {
             break;
         };
     }
-    // console.log("getseller output: ", sellerId);
+    
     res.json({id: users[sellerId].id});
 });
 
