@@ -2,7 +2,6 @@ const express = require('express');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
 const morgan = require('morgan');
-const uuid = require('uuid').v4;
 const path = require('path');
 const fs = require('fs');
 
@@ -345,6 +344,16 @@ app.get('/api/post/:tag/:page', (req, res) => {
     console.log(tag, page);
     const result = anns.filter(ann => ann.Tag.includes(tag) && !ann.Close);
     return res.json(result.slice((page - 1) * 12, page * 12));
+
+    // const result = anns.filter(ann => {
+    //     const annWords = ann.Title.toLowerCase();
+    //     const annTag = ann.Tag;
+    //     return queryWords.every(word => {
+
+    //         // return ((annWords.indexOf(word) > -1));
+    //         return ((annWords.indexOf(word) > -1) || (annTag.includes(word)));
+    //     });
+    // });
 });
 
 app.get('/api/cart', checkToken, (req, res) => {
@@ -534,8 +543,11 @@ app.get('/api/search', (req, res) => {
     const result = anns.filter(ann => {
         const annWords = ann.Title.toLowerCase();
         const annTag = ann.Tag;
+        
         return queryWords.every(word => {
+            word = word.replace(/['"«»]/g, '');
 
+            console.log((annWords.indexOf(word) > -1));
             // return ((annWords.indexOf(word) > -1));
             return ((annWords.indexOf(word) > -1) || (annTag.includes(word)));
         });
